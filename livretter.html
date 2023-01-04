@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>HTML Template til React</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+
+     <button data-text="Awesome" class="button">
+          <span class="actual-text">&nbsp;Livretter&nbsp;</span>
+          <span class="hover-text" aria-hidden="true">&nbsp;Livretter&nbsp;</span>
+      </button>
+
+    
+    <div id="root1"></div>
+
+    <script type="text/babel">
+
+      const Livretter = [
+         
+      'Pasta Pesto',
+      'Crispy Chicken',
+      'Hummus',
+      'Enjera', 
+      'Travel', 
+      'Cake' 
+      ]
+
+      const MyLivretter = (Props) => {
+          console.log(Props);
+          return(
+               <>
+               <ul>
+                    {Props.list.map(Livretter =>{
+                         return(
+                         <li>{Livretter}</li>
+
+                         )
+                         
+                    })}
+               </ul>
+               </>
+          )
+
+      }
+      ReactDOM.render(
+          <MyLivretter list={Livretter}/>, 
+      document.getElementById('root1')
+
+      )
+
+    </script>
+
+  </body>
+</html>
