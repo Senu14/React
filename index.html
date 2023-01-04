@@ -1,25 +1,156 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https:unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <title>HTML Template til React</title>
   </head>
   <body>
 
     <div id="root"></div>
+    <div id="root1"></div>
+    <div id="root2"></div>
+    <div id="root3"></div>
+    <div id="root4"></div>
+    <div id="root5"></div>
+    <div id="root6"></div>
+    <div id="root7"></div>
+    <div id="root8"></div>
 
     <script type="text/babel">
-      // Her skal du indsætte din react kode
-      const myelement = (
+      	
+      const root = ReactDOM.createRoot(document.getElementById('root'))
 
-      <h2>JSX er godt for maven!</h2>
- )
-     // const element = <h2  className = "myelement">JSX er godt for maven!</h2>;
- 
-     ReactDOM.render(myelement, document.getElementById('root'));
-    </script>
+      //  Her skal du indsætte din react kode
+      const WirteJSX = () => {
+        return <h1>JSX er godt for maven!</h1>
+      }
+        
+root.render(<WirteJSX/>)
 
-  </body>
-</html>
+
+const root1 = ReactDOM.createRoot(document.getElementById('root1'))
+
+const Sum = () => {
+      return <h1>{10*10}</h1>
+      }
+      root1.render(<Sum/>)
+
+
+const root2 = ReactDOM.createRoot(document.getElementById('root2'))
+
+const Name = () => {
+      return (
+      <ol>
+      <li>Cheese</li> 
+      <li>Cake</li>  
+      <li>Enjera</li>  
+      <li>Pasta</li>  
+      </ol>
+      )
+      }
+      root2.render(<Name/>)
+
+
+const root3 = ReactDOM.createRoot(document.getElementById('root3'))
+
+const Afsnit = () => {
+      return <p><h3>Afsnit 1</h3>
+             "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,consectetur, adipisci velit..." 
+             <br></br>
+             <h3>Afsnit 2</h3>
+              "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,consectetur, adipisci velit..." </p>
+      }
+      root3.render(<Afsnit/>)
+
+const root4 = ReactDOM.createRoot(document.getElementById('root4'))
+
+const Bye = () => {
+      return <>
+       <p>Red</p>
+       <p>Blue </p>
+       <p>Pink </p> 
+       <p>Black</p>    
+      </>
+
+     }
+     root4.render(<Bye/>)
+   
+const root5 = ReactDOM.createRoot(document.getElementById('root5'))
+  
+const Class = () => {
+      return <table>
+     <form action="/login" method ="post"/>
+
+     <div>
+      <leble for="email">Email</leble>
+      <input type="text" id="email"  name="email"/>
+     
+    </div>
+    <div>
+      <leble for="password">Password</leble>
+      <input type="password" id="password"  name="password"/>
+     
+    </div>
+    <button type="submit" id="login">login</button>
+
+    </table>
+
+    }
+    root5.render(<Class/>)
+
+
+const root6 = ReactDOM.createRoot(document.getElementById('root6'))
+
+const Level = () => {
+      return <section class= "mainwrapper">Sections here</section>
+
+      }
+      root6.render(<Level/>)
+
+
+const Number = 12
+ let result
+
+ if ( Number > 12) {
+   result = 'Godmorgen!' 
+ }else{ 
+   result = 'Goddag!'
+
+ }
+  ReactDOM.render(result, document.getElementById('root7'))
+
+  result = Number > 12 ? 'Godmorgen!' : 'Goddag!'
+
+
+const root8 = ReactDOM.createRoot(document.getElementById('root8'))
+const App = () => {
+  return (
+    <>
+    <WirteJSX/>
+    <Sum/>
+    <Name/>
+    <Afsnit/>
+    <Bye/>
+    <Class/>
+    <Level/>
+    </>
+
+  )
+}
+root8.render(<App/>)
+
+
+
+
+  
+   
+
+
+
+    
+  </script>
+
+   </body>
+ </html>
