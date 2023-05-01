@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import { StyleSheet, Image, TextInput, Pressable, View, Text, FlatList, } from 'react-native';
 
 
@@ -17,26 +18,58 @@ const ListItem = props => {
 }
 
 export default function App() {
+  //State var til input tekst
+  const [ enteredTaskText, setEnteredTaskList ] = useState()
+  //State var til task list (array)
+  const [ taskList, setTaskList ] = useState( [] )
+
+  //Handler som sætter input tekst var når der skrives i feltet
+  const taskTextHandler = enteredTaskText => {
+   setEnteredTaskList(enteredTaskText)
+
+  }
+  // Handler som tilføjer tekst til array af tasks
+  const addTaskHandler = () =>{
+    setTaskList(curTasks => [
+      ...curTasks,
+      
+      
+  // Tilføjer id og tekst til nuværende liste
+  { id: Math.random().toString(), title: enteredTaskText }
+    ])
+  // Nulstiller input tekst
+    setEnteredTaskList('')
+  }
+// Handler til at slette task med
+  const deleteTaskHandler = id => {
+// Sætter list til sig selv under id der skal slettes
+     setTaskList(taskList.filter(task => task.id !== id))
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.boldText}>ToDoList</Text>
+        <Text style={styles.headline}>ToDoList</Text>
         <Image source={require('./assets/apple-touch-icon.png')} style={styles.logo}></Image>
       </View>
       <View style={ styles.main}>
         <View style={styles.formContainer}>
           <TextInput
           placeholder= 'Indtast opgave' 
-          style={styles.TextInput}
-
-          
+          style={styles.TextInput} onChangeText= {taskTextHandler} 
+          value={enteredTaskText}
           ></TextInput>
-          <Pressable style={styles.button}>
+          <Pressable style={styles.button} onPress={addTaskHandler}>
             <text style={styles.buttonText}>+</text>
           </Pressable>
+
         </View>
-      <FlatList data={arrData} renderItem={itemData => {
-        return <ListItem title={itemData.item.title}></ListItem>
+      <FlatList data={taskList} renderItem={itemData => {
+        return (
+        <Pressable onPress={e => deleteTaskHandler(itemData.item.id)}>
+        <ListItem title={itemData.item.title}></ListItem>
+        </Pressable>
+        )
       }}>
 
       </FlatList>
