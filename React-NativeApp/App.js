@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-
-import { StyleSheet, Image, TextInput, Pressable, View, Text, FlatList, } from 'react-native';
+import { SelectList } from 'react-native-dropdown-select-list';
+import { StyleSheet, Image, TextInput, Pressable, View, Text, FlatList, CheckBox, } from 'react-native';
 
 
 const arrData = [
@@ -18,6 +18,26 @@ const ListItem = props => {
 }
 
 export default function App() {
+
+//State var til Textarea felt
+  const MyTextarea = () => { 
+    const [text, setText] = useState('');
+  }
+// State var til dropdown manu with options
+  const [ selected, setSelected ] = useState('');
+
+  const data = [
+    {key: '1', value: 'Rituals...',},
+    {key: '2', value: 'Matas', disabled:true},
+    {key: '3', value: 'Chanel',},
+  ]
+ 
+
+
+
+  // State var til checkBox 
+  const [ checked, setChecked ] = useState(false);
+
   //State var til input tekst
   const [ enteredTaskText, setEnteredTaskList ] = useState()
   //State var til task list (array)
@@ -69,10 +89,40 @@ export default function App() {
         <Pressable onPress={e => deleteTaskHandler(itemData.item.id)}>
         <ListItem title={itemData.item.title}></ListItem>
         </Pressable>
+        
+        
+
         )
       }}>
 
       </FlatList>
+      
+      <TextInput
+        style={{ height: 200, borderColor: 'gray', borderWidth: 1 }}
+        multiline={true}
+        numberOfLines={4}
+        onChangeText={text => setText(text)}
+        value={Text}
+      />
+
+     
+  
+
+      <SelectList
+         setSelected={(val) => setSelected(val)}
+         data={data}
+         save="value"
+         /> 
+
+      <text style={styles.label}>Kad du lide den side?</text>
+      <CheckBox
+        value={checked}
+        onValueChange={setChecked}
+        style={styles.CheckBox}
+        />
+        <Text> {checked ? '💖' : '💔'}</Text>
+
+       
      </View>
      </View>  
   
